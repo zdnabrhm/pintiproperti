@@ -9,7 +9,10 @@ export function Navbar() {
         className="font-montserrat flex items-baseline justify-between p-5 py-6 lg:px-8"
       >
         {/* Logo */}
-        <a href="/#" className="-m-1.5 p-1.5 font-semibold lg:text-xl">
+        <a
+          href="/#"
+          className="-m-1.5 p-1.5 font-semibold tracking-tight lg:text-xl"
+        >
           <span className="sr-only">Pinti Properti</span>
           Pinti Properti
         </a>
@@ -19,7 +22,10 @@ export function Navbar() {
           <NavLink href="/#">About</NavLink>
           <NavLink href="/#">Services</NavLink>
           <NavLink href="/#">Testimonials</NavLink>
-          <Button asChild className="bg-accent">
+          <Button
+            asChild
+            className="from-accent-300 to-accent-400 bg-linear-to-b text-neutral-900"
+          >
             <a href="/#">
               Contact Us <span aria-hidden="true">&rarr;</span>
             </a>
@@ -28,7 +34,10 @@ export function Navbar() {
 
         {/* Mobile menu button */}
         <div className="flex lg:hidden">
-          <Button asChild className="bg-accent text-sm">
+          <Button
+            asChild
+            className="from-accent-300 to-accent-400 bg-linear-to-b text-sm text-neutral-900"
+          >
             <a href="/#">
               Contact Us <span aria-hidden="true">&rarr;</span>
             </a>
