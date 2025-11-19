@@ -1,7 +1,8 @@
 ---
 import "@/styles/global.css";
-import { Button } from "@/components/ui/button";
+
 import { Navbar } from "@/components/navbar";
+import { Hero } from "@/components/hero";
 ---
 
 <html lang="en">
@@ -16,14 +17,9 @@ import { Navbar } from "@/components/navbar";
   <body>
     <div class="mx-auto max-w-7xl">
       <Navbar client:load />
-      <div
-        class="grid min-h-screen place-items-center content-center text-balance"
-      >
-        <h1 class="font-montserrat text-7xl tracking-tighter">
-          Pinti Properti
-        </h1>
-        <Button className="text-secondary mt-6">Click me</Button>
-      </div>
+      <main>
+        <Hero />
+      </main>
     </div>
   </body>
 </html>
