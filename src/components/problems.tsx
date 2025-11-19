@@ -37,8 +37,10 @@ export function Problems() {
               <BanIcon className="size-10 stroke-neutral-900 p-2" />
             </div>
             <div className="space-y-3">
-              <h3 className="font-semibold">{title}</h3>
-              <p className="text-neutral-100">{description}</p>
+              <h3 className="text-lg leading-none font-semibold lg:text-xl">
+                {title}
+              </h3>
+              <p className="text-neutral-200">{description}</p>
             </div>
           </div>
         ))}
