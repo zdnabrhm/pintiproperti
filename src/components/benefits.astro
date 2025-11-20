@@ -1,0 +1,85 @@
+---
+import { CreditCardIcon, HandPlatterIcon, TargetIcon } from "lucide-react";
+import LinkButton from "./link-button.astro";
+import { Image } from "astro:assets";
+import timeInvest from "@/assets/time-invest.png";
+import investProperties from "@/assets/invest-properties.png";
+
+const BENEFITS = [
+  {
+    icon: TargetIcon,
+    title: "Built for Expats",
+    description:
+      "Properties vetted specifically for international professionals. No local tricks needed — we know exactly what works for your visa and income situation.",
+  },
+  {
+    icon: CreditCardIcon,
+    title: "No Giant Down Payment",
+    description:
+      "We unlock financing that doesn't require 20-30% equity. Our bank partnerships make property ownership possible even when you're not sitting on €50K+.",
+  },
+  {
+    icon: HandPlatterIcon,
+    title: "Full-Service Everything",
+    description:
+      "From search to tenant management, we handle it all. You don't need to become a German real estate expert — that's our job.",
+  },
+];
+---
+
+<section
+  id="benefits"
+  class="flex flex-col items-start gap-8 px-5 py-16 max-lg:flex-col-reverse lg:flex-row lg:gap-12 lg:px-8"
+>
+  <div class="space-y-2">
+    <Image
+      src={timeInvest}
+      alt="An illustration of perfect times to invest"
+      class="w-full object-contain lg:max-w-md"
+    />
+    <Image
+      src={investProperties}
+      alt="An illustration of invest properties"
+      class="w-full object-contain lg:max-w-md"
+    />
+  </div>
+
+  <div class="flex-1 space-y-12">
+    <div class="space-y-3">
+      <h2>
+        The Times Are <span class="text-accent-300">Perfect</span> for Smart Property
+        Investment
+      </h2>
+      <p>
+        The market conditions are ideal for property that pays for itself
+        through rental income. Long-term wealth building has never been more
+        attractive.
+      </p>
+    </div>
+
+    <div class="space-y-8">
+      {
+        BENEFITS.map(({ icon: Icon, title, description }) => (
+          <div class="flex gap-5">
+            <div class="from-secondary-300 to-secondary-400 h-fit rounded-[6px] bg-linear-to-b p-0.5">
+              <Icon className="size-10 stroke-neutral-900 p-2" />
+            </div>
+            <div class="space-y-3">
+              <h3 class="text-lg leading-none font-semibold lg:text-xl">
+                {title}
+              </h3>
+              <p class="text-neutral-200">{description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="flex flex-col gap-2 lg:flex-row">
+      <LinkButton href="/#">Schedule a Free Consultation</LinkButton>
+      <LinkButton href="/#" variant="outline">
+        Discover Your Investment Options
+      </LinkButton>
+    </div>
+  </div>
+</section>
