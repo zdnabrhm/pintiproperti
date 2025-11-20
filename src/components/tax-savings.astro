@@ -1,0 +1,62 @@
+---
+import CTA from "@/components/cta.astro";
+import { Image } from "astro:assets";
+import taxSavings from "@/assets/tax-savings.png";
+import { CheckIcon } from "lucide-react";
+---
+
+<section
+  id="tax-savings"
+  class="wrapper flex flex-col items-start gap-12 lg:flex-row"
+>
+  <div class="flex-1 space-y-12">
+    <h2>
+      How You Reduce <span class="text-accent-300">Taxes</span> While Building Wealth
+    </h2>
+
+    <div class="space-y-5">
+      <p>
+        You buy an apartment for €250,000. The building portion (80%) = €200,000
+        is tax-deductible.
+      </p>
+      <p>
+        With depreciation (AfA) of 2-4%, you deduct €4,000-8,000 per year from
+        your taxable income.
+      </p>
+      <p>Lower tax bill NOW + building tax-free wealth for later.</p>
+      <p>
+        Even better? Rental income covers your mortgage, so you're building
+        equity without cash out of pocket.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-6">
+      <div class="flex items-center gap-3">
+        <div
+          class="from-secondary-300 to-secondary-400 h-fit rounded-[6px] bg-linear-to-b p-1"
+        >
+          <CheckIcon className="size-4 stroke-neutral-900" />
+        </div>
+        <p>Pay less taxes this year</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div
+          class="from-secondary-300 to-secondary-400 h-fit rounded-[6px] bg-linear-to-b p-1"
+        >
+          <CheckIcon className="size-4 stroke-neutral-900" />
+        </div>
+        <p>Build wealth that grows tax-free</p>
+      </div>
+    </div>
+
+    <CTA />
+  </div>
+
+  <div>
+    <Image
+      src={taxSavings}
+      alt="An illustration of tax savings"
+      class="w-full object-contain lg:max-w-md"
+    />
+  </div>
+</section>
