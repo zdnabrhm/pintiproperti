@@ -197,3 +197,9 @@
     @apply font-montserrat text-3xl leading-[1.2] font-semibold tracking-tight text-balance lg:text-4xl;
   }
 }
+
+@layer components {
+  .wrapper {
+    @apply mx-auto max-w-7xl px-5 py-16 lg:px-8;
+  }
+}
