@@ -2,16 +2,19 @@
 import { FAQAccordion } from "@/components/faq-accordion";
 ---
 
-<section id="faq" class="wrapper max-w-3xl space-y-12">
-  <h2 class="text-center">
-    Frequently Asked <span class="text-accent-300">Questions</span>
-  </h2>
+<section id="faq" class="bg-primary-700">
+  <div class="wrapper max-w-3xl space-y-12">
+    <h2 class="text-center">
+      Frequently Asked <span class="text-accent-300">Questions</span>
+    </h2>
 
-  <FAQAccordion client:visible />
+    <FAQAccordion client:visible />
 
-  <p>
-    Still have questions? <a href="/#" class="text-accent-300 underline"
-      >Contact our team</a
-    > — we're here to help.
-  </p>
+    <p class="mt-12">
+      Still have questions? <a
+        href="/#"
+        class="text-accent-300 inline underline">Contact our team</a
+      > — we're here to help.
+    </p>
+  </div>
 </section>

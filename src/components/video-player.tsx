@@ -15,7 +15,7 @@ export function VideoPlayer({
       controls
       width="100%"
       height="auto"
-      className="aspect-video rounded-xl"
+      className="border-primary-600 aspect-video rounded-xl border-4"
       playsInline
       preload="metadata"
       onError={(error) => {
