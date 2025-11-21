@@ -1,6 +1,7 @@
 ---
 import { cn } from "@/lib/utils";
 import LinkButton from "./link-button.astro";
+import { ScheduleButton } from "@/components/schedule-button";
 
 interface Props {
   class?: string;
@@ -10,7 +11,7 @@ const { class: className } = Astro.props;
 ---
 
 <div class={cn("flex flex-col gap-2 lg:flex-row", className)}>
-  <LinkButton href="/#">Schedule a Free Consultation</LinkButton>
+  <ScheduleButton client:visible />
   <LinkButton href="/#" variant="outline">
     Discover Your Investment Options
   </LinkButton>
