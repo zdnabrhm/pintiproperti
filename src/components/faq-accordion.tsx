@@ -70,7 +70,7 @@ const QUESTIONS = [
 
 export function FAQAccordion() {
   return (
-    <Accordion type="single" collapsible defaultValue="item-1">
+    <Accordion type="single" collapsible defaultValue={QUESTIONS[0].slug}>
       {QUESTIONS.map(({ slug, question, answer }) => (
         <AccordionItem key={slug} value={slug}>
           <AccordionTrigger>{question}</AccordionTrigger>
