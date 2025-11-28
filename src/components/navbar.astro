@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import logo from "@/assets/logo.png";
+import NavLink from "@/components/nav-link.astro";
+import LinkButton from "@/components/link-button.astro";
+---
+
+<header>
+  <nav
+    aria-label="Global"
+    class="font-montserrat mx-auto flex max-w-7xl items-center justify-between p-5 py-6 lg:px-8"
+  >
+    <!-- Logo -->
+    <a href="/#">
+      <span class="sr-only">Pinti Properti</span>
+      <Image src={logo} alt="Pinti Properti" class="w-[60px]" />
+    </a>
+
+    <!-- Desktop navigation -->
+    <div class="hidden items-baseline lg:flex lg:gap-x-12">
+      <NavLink href="/#">About</NavLink>
+      <NavLink href="/#">Services</NavLink>
+      <NavLink href="/#">Testimonials</NavLink>
+      <LinkButton href="/#"
+        >Contact Us<span aria-hidden="true">&rarr;</span></LinkButton
+      >
+    </div>
+
+    <!-- Mobile menu button -->
+    <div class="flex lg:hidden">
+      <LinkButton href="/#"
+        >Contact Us<span aria-hidden="true">&rarr;</span></LinkButton
+      >
+    </div>
+  </nav>
+</header>

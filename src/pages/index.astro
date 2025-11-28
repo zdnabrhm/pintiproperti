@@ -1,5 +1,15 @@
 ---
-import "../styles/global.css";
+import "@/styles/global.css";
+
+import Navbar from "@/components/navbar.astro";
+import Hero from "@/components/hero.astro";
+import Problems from "@/components/problems.astro";
+import Benefits from "@/components/benefits.astro";
+import TaxSavings from "@/components/tax-savings.astro";
+import Testimonials from "@/components/testimonials.astro";
+import FAQ from "@/components/faq.astro";
+import BuildWealth from "@/components/build-wealth.astro";
+import Footer from "@/components/footer.astro";
 ---
 
 <html lang="en">
@@ -12,8 +22,16 @@ import "../styles/global.css";
   </head>
 
   <body>
-    <div class="grid h-screen place-items-center content-center">
-      <h1 class="text-7xl tracking-tighter">Pinti Properti</h1>
-    </div>
+    <Navbar />
+    <main>
+      <Hero />
+      <Problems />
+      <Benefits />
+      <TaxSavings />
+      <Testimonials />
+      <FAQ />
+      <BuildWealth />
+    </main>
+    <Footer />
   </body>
 </html>
