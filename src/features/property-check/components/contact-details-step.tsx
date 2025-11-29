@@ -176,7 +176,7 @@ export function ContactDetailsStep({
             Back
           </Button>
           <Button type="submit" form="contact-details">
-            Sumbit
+            Submit
           </Button>
         </Field>
       </CardFooter>
