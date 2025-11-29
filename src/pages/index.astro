@@ -1,7 +1,7 @@
 ---
 import "@/styles/global.css";
 
-import Navbar from "@/components/navbar.astro";
+import Layout from "@/layouts/main.astro";
 import Hero from "@/components/hero.astro";
 import Problems from "@/components/problems.astro";
 import Benefits from "@/components/benefits.astro";
@@ -9,29 +9,16 @@ import TaxSavings from "@/components/tax-savings.astro";
 import Testimonials from "@/components/testimonials.astro";
 import FAQ from "@/components/faq.astro";
 import BuildWealth from "@/components/build-wealth.astro";
-import Footer from "@/components/footer.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Pinti Properti</title>
-  </head>
-
-  <body>
-    <Navbar />
-    <main>
-      <Hero />
-      <Problems />
-      <Benefits />
-      <TaxSavings />
-      <Testimonials />
-      <FAQ />
-      <BuildWealth />
-    </main>
-    <Footer />
-  </body>
-</html>
+<Layout>
+  <main>
+    <Hero />
+    <Problems />
+    <Benefits />
+    <TaxSavings />
+    <Testimonials />
+    <FAQ />
+    <BuildWealth />
+  </main>
+</Layout>

@@ -63,6 +63,7 @@ export default [
       // Disable React in scope rule (not needed in React 19)
       "react/react-in-jsx-scope": "off",
       "react/jsx-uses-react": "off",
+      "react/no-children-prop": "off",
 
       // Override/add rules settings here, such as:
       // "astro/no-set-html-directive": "error"

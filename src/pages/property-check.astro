@@ -1,0 +1,10 @@
+---
+import Layout from "@/layouts/main.astro";
+import { PropertyCheckMultiStepForm } from "@/features/property-check/components/property-check-multi-step-form";
+---
+
+<Layout>
+  <main class="wrapper flex min-h-svh items-center justify-center">
+    <PropertyCheckMultiStepForm client:load />
+  </main>
+</Layout>
