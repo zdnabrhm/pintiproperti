@@ -1,0 +1,126 @@
+---
+import {
+  CreditCardIcon,
+  SearchIcon,
+  ScaleIcon,
+  SettingsIcon,
+  CheckIcon,
+} from "lucide-react";
+
+const SERVICES = [
+  {
+    id: "financing",
+    icon: CreditCardIcon,
+    title: "Expat-Friendly Financing",
+    description:
+      "Structured financing solutions designed for international professionals",
+    features: [
+      "Minimal equity requirements through bank partnerships",
+      "Specialized support for visa holders and expats",
+      "Transparent ROI projections and tax benefit calculations",
+    ],
+    gridClass: "lg:col-span-1 lg:row-span-2",
+  },
+  {
+    id: "discovery",
+    icon: SearchIcon,
+    title: "Property Discovery & Selection",
+    description: "Curated portfolio vetted for international investors",
+    features: [
+      "Market analysis with rental demand data",
+      "Prime Bavaria locations (Munich, Augsburg, Nuremberg)",
+    ],
+    gridClass: "lg:col-span-1 lg:row-span-1",
+  },
+  {
+    id: "tax-legal",
+    icon: ScaleIcon,
+    title: "Tax & Legal Support",
+    description: "Navigate German regulations with expert guidance",
+    features: [
+      "Tax optimization and benefit maximization",
+      "Notary process coordination with English translation",
+    ],
+    gridClass: "lg:col-span-1 lg:row-span-1",
+  },
+  {
+    id: "management",
+    icon: SettingsIcon,
+    title: "Full-Service Management",
+    description: "End-to-end property management in English",
+    features: [
+      "Tenant placement and screening",
+      "Monthly income tracking and reporting",
+      "Local contractor network for maintenance",
+    ],
+    gridClass: "lg:col-span-2 lg:row-span-1",
+  },
+];
+---
+
+<section id="services" class="bg-primary-700">
+  <div class="wrapper">
+    <div class="mb-12 space-y-3 text-center lg:mb-16">
+      <h2>
+        Your Complete Property Investment <span class="text-accent-300"
+          >Partner</span
+        >
+      </h2>
+      <p class="m-auto max-w-2xl text-neutral-200">
+        From discovery to ongoing management, we guide international
+        professionals through every step of German real estate investment
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 lg:auto-rows-fr lg:grid-cols-2 lg:gap-8">
+      {
+        SERVICES.map(
+          ({ id, icon: Icon, title, description, features, gridClass }) => (
+            <div
+              class:list={[
+                "bg-primary-800 border-primary-600 hover:border-accent-300 relative space-y-4 overflow-hidden rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 lg:p-8",
+                gridClass,
+              ]}
+            >
+              {/* Decorative Blobs - Only for Financing and Management cards */}
+              {id === "financing" && (
+                <div
+                  class="from-accent-300/15 to-secondary-400/10 pointer-events-none absolute -right-20 -bottom-20 hidden size-96 rounded-full bg-linear-to-br blur-3xl lg:block lg:size-80"
+                  aria-hidden="true"
+                />
+              )}
+              {id === "management" && (
+                <div
+                  class="from-secondary-300/15 to-primary-400/10 pointer-events-none absolute -top-16 -right-16 hidden size-56 rounded-full bg-linear-to-bl blur-2xl lg:block lg:size-72"
+                  aria-hidden="true"
+                />
+              )}
+
+              <div class="from-secondary-300 to-secondary-400 relative z-10 h-fit w-fit rounded-[6px] bg-linear-to-b p-0.5">
+                <Icon className="size-10 stroke-neutral-900 p-2" />
+              </div>
+
+              <div class="relative z-10 space-y-3">
+                <h3 class="text-xl font-semibold lg:text-2xl">{title}</h3>
+                <p class="text-base text-neutral-200 lg:text-lg">
+                  {description}
+                </p>
+              </div>
+
+              <ul class="relative z-10 space-y-3">
+                {features.map((feature) => (
+                  <li class="flex items-start gap-2">
+                    <CheckIcon className="text-accent-300 mt-0.5 size-4 shrink-0" />
+                    <span class="text-sm text-neutral-200 lg:text-base">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ),
+        )
+      }
+    </div>
+  </div>
+</section>
