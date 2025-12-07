@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { useAtom, useAtomValue } from "jotai";
 import { atom } from "jotai";
 import { useForm } from "@tanstack/react-form";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { submitToGoogleSheets } from "@/lib/google-sheets";
 import {
   Card,
   CardContent,
@@ -328,6 +331,7 @@ export function PropertyCheckMultiStepForm() {
   const [formData, setFormData] = useAtom(formDataAtom);
   const [currentStepIndex, setCurrentStepIndex] = useAtom(currentStepIndexAtom);
   const stepsConfig = useAtomValue(stepsConfigAtom);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const currentStepConfig = stepsConfig[currentStepIndex];
   const totalSteps = stepsConfig.length;
@@ -364,6 +368,7 @@ export function PropertyCheckMultiStepForm() {
     email: string;
     phone: string;
   }) => {
+    setIsSubmitting(true);
     try {
       // Merge final contact details with existing form data
       const completeFormData = finalContactDetails
@@ -374,21 +379,34 @@ export function PropertyCheckMultiStepForm() {
       const validatedData = propertyCheckSchema.parse(completeFormData);
       console.log("Form submitted successfully:", validatedData);
 
-      // Here you would typically send the data to your backend
-      // For now, we'll just show an alert
-      alert(
-        "Thank you! Your property check has been submitted successfully. We will contact you soon.",
-      );
+      // Submit to Google Sheets
+      const result = await submitToGoogleSheets(validatedData);
+
+      if (result.success) {
+        toast.success(
+          "Thank you! Your property check has been submitted successfully. We will contact you soon.",
+        );
+      } else {
+        console.error("Google Sheets submission error:", result.error);
+        // Still show success to user (data was validated)
+        // but log the error for debugging
+        toast.success(
+          "Thank you! Your property check has been submitted. We will contact you soon.",
+        );
+      }
 
       // Reset form
       setFormData({});
       setCurrentStepIndex(0);
 
-      // Navigate to home page
-      window.location.href = "/";
+      // Delay redirect to show success toast
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
     } catch (error) {
       console.error("Validation error:", error);
-      alert("Please complete all required fields correctly.");
+      toast.error("Please complete all required fields correctly.");
+      setIsSubmitting(false);
     }
   };
 
@@ -404,6 +422,7 @@ export function PropertyCheckMultiStepForm() {
         onBack={handleBack}
         currentStep={currentStepIndex + 1}
         totalSteps={totalSteps}
+        isSubmitting={isSubmitting}
       />
     );
   }

@@ -1,4 +1,5 @@
 import { useForm } from "@tanstack/react-form";
+import { Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -28,6 +29,7 @@ interface ContactDetailsStepProps {
   onBack: () => void;
   currentStep: number;
   totalSteps: number;
+  isSubmitting?: boolean;
 }
 
 export function ContactDetailsStep({
@@ -37,6 +39,7 @@ export function ContactDetailsStep({
   onBack,
   currentStep,
   totalSteps,
+  isSubmitting = false,
 }: ContactDetailsStepProps) {
   const form = useForm({
     defaultValues: {
@@ -175,8 +178,15 @@ export function ContactDetailsStep({
           <Button type="button" variant="outline" onClick={onBack}>
             Back
           </Button>
-          <Button type="submit" form="contact-details">
-            Submit
+          <Button type="submit" form="contact-details" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Submitting...
+              </>
+            ) : (
+              "Submit"
+            )}
           </Button>
         </Field>
       </CardFooter>
