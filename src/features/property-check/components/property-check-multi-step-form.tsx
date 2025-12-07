@@ -382,27 +382,16 @@ export function PropertyCheckMultiStepForm() {
       // Submit to Google Sheets
       const result = await submitToGoogleSheets(validatedData);
 
-      if (result.success) {
-        toast.success(
-          "Thank you! Your property check has been submitted successfully. We will contact you soon.",
-        );
-      } else {
+      if (!result.success) {
         console.error("Google Sheets submission error:", result.error);
-        // Still show success to user (data was validated)
-        // but log the error for debugging
-        toast.success(
-          "Thank you! Your property check has been submitted. We will contact you soon.",
-        );
       }
 
       // Reset form
       setFormData({});
       setCurrentStepIndex(0);
 
-      // Delay redirect to show success toast
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 2000);
+      // Redirect to success page
+      window.location.href = "/property-check/success";
     } catch (error) {
       console.error("Validation error:", error);
       toast.error("Please complete all required fields correctly.");
