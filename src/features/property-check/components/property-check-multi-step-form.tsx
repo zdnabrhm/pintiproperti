@@ -369,6 +369,7 @@ export function PropertyCheckMultiStepForm() {
     phone: string;
   }) => {
     setIsSubmitting(true);
+
     try {
       // Merge final contact details with existing form data
       const completeFormData = finalContactDetails
@@ -377,35 +378,32 @@ export function PropertyCheckMultiStepForm() {
 
       // Validate the complete form data
       const validatedData = propertyCheckSchema.parse(completeFormData);
-      console.log("Form submitted successfully:", validatedData);
 
       // Submit to Google Sheets
       const result = await submitToGoogleSheets(validatedData);
 
-      if (result.success) {
-        toast.success(
-          "Thank you! Your property check has been submitted successfully. We will contact you soon.",
+      if (!result.success) {
+        // Show user-friendly error message
+        toast.error(
+          "Submission failed. Please check your connection and try again.",
+          { duration: 5000 },
         );
-      } else {
+
         console.error("Google Sheets submission error:", result.error);
-        // Still show success to user (data was validated)
-        // but log the error for debugging
-        toast.success(
-          "Thank you! Your property check has been submitted. We will contact you soon.",
-        );
+        setIsSubmitting(false);
+        return; // Keep user on form to retry
       }
 
-      // Reset form
+      // Success: Reset form and redirect (no success toast needed)
       setFormData({});
       setCurrentStepIndex(0);
-
-      // Delay redirect to show success toast
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 2000);
+      window.location.href = "/property-check/success";
     } catch (error) {
+      // Validation error
       console.error("Validation error:", error);
-      toast.error("Please complete all required fields correctly.");
+      toast.error("Please complete all required fields correctly.", {
+        duration: 5000,
+      });
       setIsSubmitting(false);
     }
   };
